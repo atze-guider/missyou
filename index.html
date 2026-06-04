@@ -1,0 +1,973 @@
+<!DOCTYPE html>
+<html lang="ko" class="h-full bg-slate-50">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>프로 상담사를 위한 A/S 고객 관리 마스터 매뉴얼</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts (Inter & Noto Sans KR) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+KR:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        body {
+            font-family: 'Noto Sans KR', 'Inter', sans-serif;
+        }
+        /* Custom Keyframe Animations for Breathing Exercise and Transitions */
+        @keyframes breathe {
+            0%, 100% { transform: scale(1); background-color: rgba(99, 102, 241, 0.2); }
+            50% { transform: scale(1.4); background-color: rgba(45, 212, 191, 0.3); }
+        }
+        .animate-breathe {
+            animation: breathe 6s infinite ease-in-out;
+        }
+        /* Tab transition */
+        .tab-content {
+            display: none;
+        }
+        .tab-content.active {
+            display: block;
+        }
+    </style>
+</head>
+<body class="h-full flex flex-col text-slate-800">
+
+    <!-- Header Section -->
+    <header class="bg-gradient-to-r from-indigo-700 via-indigo-800 to-slate-950 text-white shadow-md">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-5">
+            <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+                <div>
+                    <div class="flex items-center gap-2">
+                        <span class="bg-indigo-500 text-xs font-bold uppercase px-2.5 py-1 rounded-full text-indigo-50">경력 10년 차 실장님의 특급 노하우</span>
+                    </div>
+                    <h1 class="text-2xl sm:text-3xl font-extrabold tracking-tight mt-1 flex items-center gap-2">
+                        <i data-lucide="shield-check" class="text-teal-400 w-8 h-8"></i>
+                        A/S 고객 관리 완벽 매뉴얼
+                    </h1>
+                    <p class="text-sm text-indigo-200 mt-1">상담사분들의 감정을 지키고, 고객의 마음은 확실하게 잡는 실전 트레이닝 플랫폼</p>
+                </div>
+                <div class="flex items-center gap-3 bg-white/10 p-2.5 rounded-xl border border-white/10 self-start md:self-auto">
+                    <div class="p-2 bg-indigo-600 rounded-lg text-white">
+                        <i data-lucide="users" class="w-5 h-5"></i>
+                    </div>
+                    <div>
+                        <p class="text-xs text-indigo-300">오늘의 마인드셋</p>
+                        <p class="text-sm font-semibold text-teal-300">"고객은 브랜드에 화내는 것뿐!"</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Navigation Tabs -->
+    <nav class="bg-white border-b border-slate-200 sticky top-0 z-50 shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex space-x-2 overflow-x-auto py-3 scrollbar-none">
+                <button onclick="switchTab('tab-manual')" id="btn-tab-manual" class="tab-btn px-4 py-2 text-sm font-medium rounded-lg bg-indigo-50 text-indigo-700 flex items-center gap-2 whitespace-nowrap transition-all">
+                    <i data-lucide="book-open" class="w-4 h-4"></i> 핵심 매뉴얼
+                </button>
+                <button onclick="switchTab('tab-script')" id="btn-tab-script" class="tab-btn px-4 py-2 text-sm font-medium rounded-lg text-slate-600 hover:text-slate-900 hover:bg-slate-100 flex items-center gap-2 whitespace-nowrap transition-all">
+                    <i data-lucide="file-text" class="w-4 h-4"></i> 업종별 실전 스크립트
+                </button>
+                <button onclick="switchTab('tab-simulation')" id="btn-tab-simulation" class="tab-btn px-4 py-2 text-sm font-medium rounded-lg text-slate-600 hover:text-slate-900 hover:bg-slate-100 flex items-center gap-2 whitespace-nowrap transition-all">
+                    <i data-lucide="gamepad-2" class="w-4 h-4"></i> 롤플레잉 트레이너
+                </button>
+                <button onclick="switchTab('tab-mental')" id="btn-tab-mental" class="tab-btn px-4 py-2 text-sm font-medium rounded-lg text-slate-600 hover:text-slate-900 hover:bg-slate-100 flex items-center gap-2 whitespace-nowrap transition-all">
+                    <i data-lucide="heart" class="w-4 h-4"></i> 상담사 마인드 힐링방
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Content Container -->
+    <main class="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        
+        <!-- SECTION 1: CORE MANUAL -->
+        <section id="tab-manual" class="tab-content active space-y-8">
+            <!-- Summary Dashboard Card -->
+            <div class="bg-white rounded-2xl shadow-sm border border-slate-200 p-6 sm:p-8">
+                <h2 class="text-xl font-bold mb-4 flex items-center gap-2 text-slate-900">
+                    <span class="w-1.5 h-6 bg-indigo-600 rounded-full"></span>
+                    기본 응대 원칙 (3C 법칙)
+                </h2>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <div class="bg-blue-50/50 p-6 rounded-xl border border-blue-100 flex gap-4">
+                        <div class="w-12 h-12 rounded-xl bg-blue-600 text-white flex items-center justify-center shrink-0">
+                            <i data-lucide="snowflake" class="w-6 h-6"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-blue-900 text-lg">Calm (침착함)</h3>
+                            <p class="text-sm text-slate-600 mt-1 leading-relaxed">고객이 격양되더라도 감정에 말려들지 마세요. 우리 페이스로 상황을 주도하기 위해 항상 차분하고 균일한 어조를 유지해야 합니다.</p>
+                        </div>
+                    </div>
+                    <div class="bg-teal-50/50 p-6 rounded-xl border border-teal-100 flex gap-4">
+                        <div class="w-12 h-12 rounded-xl bg-teal-600 text-white flex items-center justify-center shrink-0">
+                            <i data-lucide="sparkles" class="w-6 h-6"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-teal-900 text-lg">Clear (명확함)</h3>
+                            <p class="text-sm text-slate-600 mt-1 leading-relaxed">복잡한 기술용어나 불필요한 사내 용어는 삼가세요. 고객 입장에서 단번에 이해되는 직관적인 가이드라인을 제공합니다.</p>
+                        </div>
+                    </div>
+                    <div class="bg-indigo-50/50 p-6 rounded-xl border border-indigo-100 flex gap-4">
+                        <div class="w-12 h-12 rounded-xl bg-indigo-600 text-white flex items-center justify-center shrink-0">
+                            <i data-lucide="handshake" class="w-6 h-6"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-indigo-900 text-lg">Cooperative (협동성)</h3>
+                            <p class="text-sm text-slate-600 mt-1 leading-relaxed">안 된다는 한계를 먼저 말하기보단, 해드릴 수 있는 범위를 적극적으로 설계해 나가는 상생 파트너가 되어 드립니다.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 5-Step Progress Timeline -->
+            <div class="bg-white rounded-2xl shadow-sm border border-slate-200 p-6 sm:p-8">
+                <h2 class="text-xl font-bold mb-6 flex items-center gap-2 text-slate-900">
+                    <span class="w-1.5 h-6 bg-indigo-600 rounded-full"></span>
+                    [5단계] A/S 표준 상담 프로세스
+                </h2>
+                <div class="relative border-l-2 border-indigo-100 ml-4 pl-6 sm:ml-6 sm:pl-8 space-y-8">
+                    <!-- Step 1 -->
+                    <div class="relative">
+                        <span class="absolute -left-12 sm:-left-14 top-0 w-8 h-8 rounded-full bg-indigo-600 text-white text-sm font-bold flex items-center justify-center ring-4 ring-white shadow-sm">1</span>
+                        <div class="bg-slate-50 rounded-xl p-5 border border-slate-200">
+                            <div class="flex items-center gap-2 mb-2">
+                                <span class="bg-indigo-100 text-indigo-800 text-xs px-2.5 py-1 rounded font-semibold uppercase">Welcome & Empathy</span>
+                                <h3 class="text-lg font-bold text-slate-900">경청 및 공감</h3>
+                            </div>
+                            <p class="text-slate-600 text-sm leading-relaxed mb-3">고객이 고충을 쏟아내는 동안 어떤 피드백도 가로막지 마세요. 가벼운 맞장구(쿠션어)를 동반해 신뢰를 다집니다.</p>
+                            <div class="bg-white p-3.5 rounded-lg border border-slate-200 flex items-start gap-2.5">
+                                <span class="text-indigo-600 font-bold text-sm select-none">💬 스크립트:</span>
+                                <p class="text-sm text-slate-700 italic">"많이 불편하셨을 텐데 우선 안심하십시오. 상세히 점검하여 신속히 문제해결을 선도해 드리겠습니다."</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Step 2 -->
+                    <div class="relative">
+                        <span class="absolute -left-12 sm:-left-14 top-0 w-8 h-8 rounded-full bg-indigo-600 text-white text-sm font-bold flex items-center justify-center ring-4 ring-white shadow-sm">2</span>
+                        <div class="bg-slate-50 rounded-xl p-5 border border-slate-200">
+                            <div class="flex items-center gap-2 mb-2">
+                                <span class="bg-teal-100 text-teal-800 text-xs px-2.5 py-1 rounded font-semibold uppercase">Fact Finding</span>
+                                <h3 class="text-lg font-bold text-slate-900">사실 확인 및 문제 진단</h3>
+                            </div>
+                            <p class="text-slate-600 text-sm leading-relaxed mb-3">고객의 주관적 불만을 객관적인 기기의 상태로 정량화합니다. 모델명, 구매 시기, 증상 발현 방식의 구체적 질문이 핵심입니다.</p>
+                            <div class="bg-white p-3.5 rounded-lg border border-slate-200 flex items-start gap-2.5">
+                                <span class="text-teal-600 font-bold text-sm select-none">💬 스크립트:</span>
+                                <p class="text-sm text-slate-700 italic">"원인을 면밀히 짚어보기 위해 여쭙겠습니다. 해당 현상이 주로 작동 시작 직후에 보이나요, 아니면 장시간 구동 시 감지되나요?"</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Step 3 -->
+                    <div class="relative">
+                        <span class="absolute -left-12 sm:-left-14 top-0 w-8 h-8 rounded-full bg-indigo-600 text-white text-sm font-bold flex items-center justify-center ring-4 ring-white shadow-sm">3</span>
+                        <div class="bg-slate-50 rounded-xl p-5 border border-slate-200">
+                            <div class="flex items-center gap-2 mb-2">
+                                <span class="bg-amber-100 text-amber-800 text-xs px-2.5 py-1 rounded font-semibold uppercase">Solution</span>
+                                <h3 class="text-lg font-bold text-slate-900">해결책 제시 및 동의</h3>
+                            </div>
+                            <p class="text-slate-600 text-sm leading-relaxed mb-3">사후 보증 기간(무/유상 여부), 예상 처리 기한을 깔끔히 통지합니다. 자가 극복이 가능하면 직접 해결을 돕고, 아니면 출장 예약을 지원합니다.</p>
+                            <div class="bg-white p-3.5 rounded-lg border border-slate-200 flex items-start gap-2.5">
+                                <span class="text-amber-600 font-bold text-sm select-none">💬 스크립트:</span>
+                                <p class="text-sm text-slate-700 italic">"해당 이상은 보증 연한 내 발생하여 무상 처리가 적용될 예정입니다. 엔지니어 방문을 위해 다가오는 수요일 14시 타임 괜찮으신가요?"</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Step 4 -->
+                    <div class="relative">
+                        <span class="absolute -left-12 sm:-left-14 top-0 w-8 h-8 rounded-full bg-indigo-600 text-white text-sm font-bold flex items-center justify-center ring-4 ring-white shadow-sm">4</span>
+                        <div class="bg-slate-50 rounded-xl p-5 border border-slate-200">
+                            <div class="flex items-center gap-2 mb-2">
+                                <span class="bg-purple-100 text-purple-800 text-xs px-2.5 py-1 rounded font-semibold uppercase">Confirmation</span>
+                                <h3 class="text-lg font-bold text-slate-900">확정 및 종결</h3>
+                            </div>
+                            <p class="text-slate-600 text-sm leading-relaxed mb-3">처리 과정을 총체적으로 축약하여 리마인드합니다. 고객의 동의 의사를 최종 확보하는 단계입니다.</p>
+                            <div class="bg-white p-3.5 rounded-lg border border-slate-200 flex items-start gap-2.5">
+                                <span class="text-purple-600 font-bold text-sm select-none">💬 스크립트:</span>
+                                <p class="text-sm text-slate-700 italic">"그럼 금일은 엔지니어 방문 예약 건으로 등록 도와드렸으며, 담당 기사님이 방문 30분 전 유선 사전 연락 예정입니다. 더 지원할 부분 있으십니까?"</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Step 5 -->
+                    <div class="relative">
+                        <span class="absolute -left-12 sm:-left-14 top-0 w-8 h-8 rounded-full bg-indigo-600 text-white text-sm font-bold flex items-center justify-center ring-4 ring-white shadow-sm">5</span>
+                        <div class="bg-slate-50 rounded-xl p-5 border border-slate-200">
+                            <div class="flex items-center gap-2 mb-2">
+                                <span class="bg-emerald-100 text-emerald-800 text-xs px-2.5 py-1 rounded font-semibold uppercase">Follow-up</span>
+                                <h3 class="text-lg font-bold text-slate-900">사후 관리 및 VOC 분석</h3>
+                            </div>
+                            <p class="text-slate-600 text-sm leading-relaxed">수리 이후 피드백 피크 수집, 이상 징후 반복성을 관제 시스템에 등록하여, 후속 품질 혁신 지표의 기반으로 축적합니다.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Customer Types Accordion -->
+            <div class="bg-white rounded-2xl shadow-sm border border-slate-200 p-6 sm:p-8">
+                <h2 class="text-xl font-bold mb-4 flex items-center gap-2 text-slate-900">
+                    <span class="w-1.5 h-6 bg-indigo-600 rounded-full"></span>
+                    상황별/고객 유형별 특수 응대 가이드
+                </h2>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <div class="border border-red-100 rounded-xl overflow-hidden shadow-sm">
+                        <div class="bg-red-50 p-4 border-b border-red-100 flex justify-between items-center">
+                            <span class="font-bold text-red-900 flex items-center gap-2">
+                                <i data-lucide="frown" class="w-5 h-5 text-red-600"></i> 감정 폭발형
+                            </span>
+                            <span class="bg-red-100 text-red-800 text-xs px-2 py-0.5 rounded font-semibold">위험도 상</span>
+                        </div>
+                        <div class="p-5 bg-white space-y-3">
+                            <p class="text-sm text-slate-600 leading-relaxed">고성을 내거나 억지주장으로 흥분도가 극에 달한 고객 유형입니다.</p>
+                            <div class="bg-slate-50 p-3 rounded-lg border border-slate-100 text-xs">
+                                <strong class="text-indigo-600 block mb-1">💡 10년 차 실장 비법:</strong>
+                                <span class="text-slate-700"><strong>'침묵의 3초'</strong> 기법을 실행하세요. 대답을 3초 지연해 부드럽게 한 옥타브 낮춰 전개하면 심리 전술상 우위를 점합니다.</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="border border-amber-100 rounded-xl overflow-hidden shadow-sm">
+                        <div class="bg-amber-50 p-4 border-b border-amber-100 flex justify-between items-center">
+                            <span class="font-bold text-amber-900 flex items-center gap-2">
+                                <i data-lucide="shield-alert" class="w-5 h-5 text-amber-600"></i> 답정너 환불형
+                            </span>
+                            <span class="bg-amber-100 text-amber-800 text-xs px-2 py-0.5 rounded font-semibold">난이도 상</span>
+                        </div>
+                        <div class="p-5 bg-white space-y-3">
+                            <p class="text-sm text-slate-600 leading-relaxed">상태 진단은 거절하고 무조건 보상과 새 제품 교환만을 요구하는 고객입니다.</p>
+                            <div class="bg-slate-50 p-3 rounded-lg border border-slate-100 text-xs">
+                                <strong class="text-indigo-600 block mb-1">💡 10년 차 실장 비법:</strong>
+                                <span class="text-slate-700">감정은 인정하되 품질 보증 원칙(Warranty rule)을 일관성 있고 공정하게 반복 고지하며 상위 부서 연결 전 단호함을 보여주세요.</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="border border-blue-100 rounded-xl overflow-hidden shadow-sm">
+                        <div class="bg-blue-50 p-4 border-b border-blue-100 flex justify-between items-center">
+                            <span class="font-bold text-blue-900 flex items-center gap-2">
+                                <i data-lucide="help-circle" class="w-5 h-5 text-blue-600"></i> 설명 묘사 곤란형
+                            </span>
+                            <span class="bg-blue-100 text-blue-800 text-xs px-2 py-0.5 rounded font-semibold">피로도 중</span>
+                        </div>
+                        <div class="p-5 bg-white space-y-3">
+                            <p class="text-sm text-slate-600 leading-relaxed">"안 돼요", "망가졌어요"와 같이 디테일을 누락해 원인 유추가 안 되는 고충 유형입니다.</p>
+                            <div class="bg-slate-50 p-3 rounded-lg border border-slate-100 text-xs">
+                                <strong class="text-indigo-600 block mb-1">💡 10년 차 실장 비법:</strong>
+                                <span class="text-slate-700">"화면이 켜지나요?" 또는 "소리가 주기적으로 틱-틱 나나요?" 처럼 객관식 한정 질문을 던져 대답을 견인해 갑니다.</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 2: INDUSTRY CUSTOM SCRIPT BUILDER -->
+        <section id="tab-script" class="tab-content space-y-6">
+            <div class="bg-white rounded-2xl shadow-sm border border-slate-200 p-6 sm:p-8">
+                <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-6">
+                    <div>
+                        <h2 class="text-xl font-bold text-slate-900 flex items-center gap-2">
+                            <span class="w-1.5 h-6 bg-indigo-600 rounded-full"></span>
+                            업종별 특화 A/S 스크립트 도우미
+                        </h2>
+                        <p class="text-sm text-slate-500 mt-1">담당하는 비즈니스 도메인을 선택하여 특색에 맞춰 재정렬된 마스터 스크립트를 즉시 생성 및 응용해 보세요.</p>
+                    </div>
+                    <!-- Selection Group -->
+                    <div class="flex bg-slate-100 p-1.5 rounded-xl border border-slate-200 shrink-0 self-start md:self-auto">
+                        <button onclick="changeIndustry('it')" id="ind-it" class="ind-btn px-4 py-1.5 text-xs sm:text-sm font-semibold rounded-lg bg-white text-indigo-700 shadow-sm transition-all">IT 가전 / 가젯</button>
+                        <button onclick="changeIndustry('furniture')" id="ind-furniture" class="ind-btn px-4 py-1.5 text-xs sm:text-sm font-semibold rounded-lg text-slate-600 hover:text-slate-800 transition-all">생활 가구 / 인테리어</button>
+                        <button onclick="changeIndustry('saas')" id="ind-saas" class="ind-btn px-4 py-1.5 text-xs sm:text-sm font-semibold rounded-lg text-slate-600 hover:text-slate-800 transition-all">SaaS 솔루션 / SW</button>
+                    </div>
+                </div>
+
+                <!-- Custom Script View Container -->
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+                    <!-- Steps Select Menu -->
+                    <div class="lg:col-span-4 space-y-2">
+                        <div class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-2">상담 진척 단계</div>
+                        <button onclick="showStepScript(1)" id="step-btn-1" class="step-script-btn w-full p-3 text-left rounded-xl bg-indigo-50 border-l-4 border-indigo-600 font-bold text-indigo-900 text-sm flex items-center justify-between transition-all">
+                            <span>1. 경청 및 쿠션 공감</span>
+                            <i data-lucide="chevron-right" class="w-4 h-4 text-indigo-600"></i>
+                        </button>
+                        <button onclick="showStepScript(2)" id="step-btn-2" class="step-script-btn w-full p-3 text-left rounded-xl bg-slate-50 border-l-4 border-transparent text-slate-700 font-medium text-sm flex items-center justify-between hover:bg-slate-100 transition-all">
+                            <span>2. 원인 정량 진단</span>
+                            <i data-lucide="chevron-right" class="w-4 h-4 text-slate-400"></i>
+                        </button>
+                        <button onclick="showStepScript(3)" id="step-btn-3" class="step-script-btn w-full p-3 text-left rounded-xl bg-slate-50 border-l-4 border-transparent text-slate-700 font-medium text-sm flex items-center justify-between hover:bg-slate-100 transition-all">
+                            <span>3. 맞춤식 솔루션 제의</span>
+                            <i data-lucide="chevron-right" class="w-4 h-4 text-slate-400"></i>
+                        </button>
+                        <button onclick="showStepScript(4)" id="step-btn-4" class="step-script-btn w-full p-3 text-left rounded-xl bg-slate-50 border-l-4 border-transparent text-slate-700 font-medium text-sm flex items-center justify-between hover:bg-slate-100 transition-all">
+                            <span>4. 조치 확정 및 고지</span>
+                            <i data-lucide="chevron-right" class="w-4 h-4 text-slate-400"></i>
+                        </button>
+                    </div>
+
+                    <!-- Display Panel -->
+                    <div class="lg:col-span-8 bg-slate-900 text-slate-100 rounded-2xl p-6 relative flex flex-col justify-between shadow-inner min-h-[280px]">
+                        <div>
+                            <div class="flex items-center justify-between mb-4 border-b border-slate-800 pb-3">
+                                <span class="text-teal-400 text-xs font-mono tracking-widest uppercase" id="script-stage-indicator">STAGE 1: Welcome & Empathy</span>
+                                <span class="bg-indigo-900/50 text-indigo-300 text-xs px-2.5 py-1 rounded border border-indigo-700/50" id="script-industry-indicator">IT 가전 분야</span>
+                            </div>
+                            <h4 class="text-sm font-semibold text-slate-400 mb-2">실전 응대 멘트 리포트:</h4>
+                            <p class="text-lg sm:text-xl font-medium leading-relaxed whitespace-pre-line text-white" id="script-text-content">
+                                "많이 불편하셨을 텐데 우선 안심하십시오. 상세히 점검하여 신속히 문제해결을 선도해 드리겠습니다."
+                            </p>
+                        </div>
+                        <div class="mt-6 flex flex-col sm:flex-row gap-3 items-center justify-between border-t border-slate-800 pt-4">
+                            <span class="text-xs text-slate-500">※ 가볍게 변경하여 업무 메신저나 메모장에 활용해 보세요.</span>
+                            <button onclick="copyToClipboard()" class="w-full sm:w-auto px-5 py-2.5 bg-indigo-600 hover:bg-indigo-500 active:bg-indigo-700 text-white rounded-xl text-sm font-bold flex items-center justify-center gap-2 transition-all shadow-md">
+                                <i data-lucide="copy" class="w-4 h-4"></i> 스크립트 복사하기
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Custom Tips Board -->
+            <div class="bg-indigo-900 text-indigo-100 rounded-2xl p-6 sm:p-8 shadow-md">
+                <div class="flex gap-4 items-start">
+                    <div class="p-3 bg-white/10 rounded-xl text-teal-300 shrink-0">
+                        <i data-lucide="lightbulb" class="w-6 h-6 animate-pulse"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-lg font-bold text-white mb-2">전문가 10년 차 실장의 전술 팁: 명칭 마스터</h3>
+                        <p class="text-sm text-indigo-200 leading-relaxed" id="industry-extra-tip">
+                            "IT 하드웨어 상담 시 기계 결함이나 고장이라는 단어를 다이렉트로 외치면 브랜드 충성도가 바닥납니다. 가급적 '일시적인 구동 지연' 혹은 '인식 프로세스 간섭 현상' 등으로 돌려 표현하며 고객을 안정시키는 기품을 발휘해 보십시오."
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 3: PRACTICE SIMULATOR -->
+        <section id="tab-simulation" class="tab-content space-y-6">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+                <!-- Left Sidebar: Choose Opponent -->
+                <div class="lg:col-span-4 space-y-4">
+                    <div class="bg-white rounded-2xl p-5 border border-slate-200 shadow-sm">
+                        <h3 class="font-bold text-slate-900 mb-4 flex items-center gap-1.5">
+                            <i data-lucide="users-round" class="w-5 h-5 text-indigo-600"></i> 트레이닝 상대 선택
+                        </h3>
+                        <div class="space-y-2">
+                            <!-- Opponent 1 -->
+                            <button onclick="startSimulation('angry')" id="sim-btn-angry" class="sim-char-btn w-full p-4 rounded-xl text-left border-2 border-indigo-600 bg-indigo-50/50 flex gap-3 transition-all">
+                                <span class="text-2xl">😡</span>
+                                <div>
+                                    <div class="font-bold text-slate-900 text-sm">김태만 고객 (52세)</div>
+                                    <div class="text-xs text-red-600 font-semibold mb-1">감정 폭발형 (분노 지수 95%)</div>
+                                    <p class="text-xs text-slate-500 line-clamp-1">"구매 직후 스크래치 발견! 당장 집으로 와라!"</p>
+                                </div>
+                            </button>
+                            <!-- Opponent 2 -->
+                            <button onclick="startSimulation('refund')" id="sim-btn-refund" class="sim-char-btn w-full p-4 rounded-xl text-left border-2 border-transparent bg-white hover:bg-slate-50 flex gap-3 transition-all">
+                                <span class="text-2xl">💸</span>
+                                <div>
+                                    <div class="font-bold text-slate-900 text-sm">박유나 고객 (29세)</div>
+                                    <div class="text-xs text-amber-600 font-semibold mb-1">답정너형 (교환/환불 고집)</div>
+                                    <p class="text-xs text-slate-500 line-clamp-1">"점검은 됐고 무조건 환불해 줘요. 왜 안 되죠?"</p>
+                                </div>
+                            </button>
+                            <!-- Opponent 3 -->
+                            <button onclick="startSimulation('unclear')" id="sim-btn-unclear" class="sim-char-btn w-full p-4 rounded-xl text-left border-2 border-transparent bg-white hover:bg-slate-50 flex gap-3 transition-all">
+                                <span class="text-2xl">🤔</span>
+                                <div>
+                                    <div class="font-bold text-slate-900 text-sm">이성훈 고객 (68세)</div>
+                                    <div class="text-xs text-blue-600 font-semibold mb-1">설명 부족형 (모호한 증상)</div>
+                                    <p class="text-xs text-slate-500 line-clamp-1">"이게 이상하게 이상한 소리만 자꾸 삐빅 나는데..."</p>
+                                </div>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Coach Dashboard -->
+                    <div class="bg-indigo-50 rounded-2xl p-5 border border-indigo-100 shadow-sm relative overflow-hidden">
+                        <div class="absolute right-0 bottom-0 opacity-10 translate-x-4 translate-y-4">
+                            <i data-lucide="award" class="w-36 h-36"></i>
+                        </div>
+                        <h4 class="font-bold text-indigo-950 mb-2 flex items-center gap-2">
+                            <i data-lucide="smile" class="text-indigo-600 w-5 h-5"></i> 10년 차 실장님의 멘토링 코너
+                        </h4>
+                        <div class="bg-white p-4 rounded-xl border border-indigo-100/50">
+                            <p class="text-xs text-slate-700 leading-relaxed" id="coach-realtime-advice">
+                                "김태만 님은 현재 초기 자극 상태이므로 변명조의 해명은 화를 돋웁니다. 극도로 공감해 주되 절차를 명확히 해야 승산이 있습니다."
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Board: Dialogue Simulator -->
+                <div class="lg:col-span-8 bg-white rounded-2xl border border-slate-200 shadow-sm flex flex-col justify-between overflow-hidden min-h-[480px]">
+                    <!-- Dialogue Header -->
+                    <div class="bg-slate-50 px-6 py-4 border-b border-slate-200 flex justify-between items-center">
+                        <div class="flex items-center gap-3">
+                            <div class="w-10 h-10 rounded-full bg-slate-200 flex items-center justify-center text-xl" id="target-avatar">😡</div>
+                            <div>
+                                <h4 class="font-bold text-slate-900 text-sm" id="target-name">김태만 고객</h4>
+                                <span class="inline-flex items-center gap-1.5 text-xs text-rose-600 font-semibold" id="target-emotion">
+                                    <span class="w-2 h-2 bg-rose-600 rounded-full animate-ping"></span> 분노 폭발 상태
+                                </span>
+                            </div>
+                        </div>
+                        <button onclick="resetSimulation()" class="text-xs font-bold text-slate-500 hover:text-slate-800 flex items-center gap-1">
+                            <i data-lucide="refresh-cw" class="w-3.5 h-3.5"></i> 대화 초기화
+                        </button>
+                    </div>
+
+                    <!-- Chat Log Screen -->
+                    <div class="flex-1 p-6 space-y-4 overflow-y-auto max-h-[300px]" id="sim-chat-box">
+                        <!-- Simulated Message 1 (Customer) -->
+                        <div class="flex items-start gap-3">
+                            <div class="w-8 h-8 rounded-full bg-slate-200 flex items-center justify-center text-sm shrink-0">😡</div>
+                            <div class="bg-slate-100 rounded-2xl rounded-tl-none p-3 max-w-[85%] text-slate-800 text-sm shadow-sm leading-relaxed">
+                                "아니 저기요, 이거 저번 주말에 샀는데 지금 당장 화면에 빨간 줄이 쭉쭉 가는데 쓸 수가 있어야지! 환불을 즉각 해주든지 당장 내일까지 와서 신상으로 바꾸고 가요!!"
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Selection Branch Panel -->
+                    <div class="bg-slate-50 p-4 sm:p-6 border-t border-slate-200" id="sim-options-panel">
+                        <div class="text-xs font-bold text-slate-400 uppercase mb-3 tracking-wider">상담사의 대응 선택안</div>
+                        <div class="space-y-2.5" id="sim-options-container">
+                            <!-- Options will dynamically load -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 4: MENTAL HEALTH HEALING -->
+        <section id="tab-mental" class="tab-content space-y-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- Breathe Training -->
+                <div class="bg-white rounded-2xl p-6 sm:p-8 border border-slate-200 shadow-sm flex flex-col justify-between">
+                    <div>
+                        <h2 class="text-xl font-bold text-slate-900 flex items-center gap-2">
+                            <i data-lucide="wind" class="text-indigo-600 w-5 h-5"></i>
+                            마음 조율사: 3초 호흡기
+                        </h2>
+                        <p class="text-sm text-slate-500 mt-1 mb-6">악성 통화 이후 흥분된 신경계를 가라앉히는 특별 훈련입니다. 풍선이 팽창할 때 들이마시고, 수축할 때 천천히 내쉬며 이완해 보세요.</p>
+                    </div>
+                    <div class="flex flex-col items-center justify-center py-10">
+                        <div class="relative w-44 h-44 rounded-full bg-indigo-50 flex items-center justify-center">
+                            <!-- Pulse Circles -->
+                            <div class="absolute w-32 h-32 rounded-full animate-breathe"></div>
+                            <div class="z-10 text-center">
+                                <span class="font-extrabold text-indigo-950 block text-lg" id="breathe-status">호흡 유지</span>
+                                <span class="text-xs text-indigo-600 mt-1 block font-mono" id="breathe-counter">00:03</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex justify-center mt-4">
+                        <button id="breathe-control-btn" onclick="toggleBreatheTimer()" class="px-6 py-2.5 bg-indigo-600 hover:bg-indigo-500 text-white font-bold rounded-xl text-sm shadow transition-all">
+                            호흡 가이드 시작
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Venting & Wise Quotes -->
+                <div class="bg-white rounded-2xl p-6 sm:p-8 border border-slate-200 shadow-sm flex flex-col justify-between">
+                    <div>
+                        <h2 class="text-xl font-bold text-slate-900 flex items-center gap-2">
+                            <i data-lucide="heart" class="text-rose-600 w-5 h-5"></i>
+                            감정 정화 편지 & 오늘의 지혜
+                        </h2>
+                        <p class="text-sm text-slate-500 mt-1 mb-6">수고하시는 소중한 상담사 동료 여러분께 선배 실장님이 전하는 따뜻한 격려 한 구절을 선물합니다.</p>
+                        
+                        <div class="bg-gradient-to-tr from-rose-50 to-pink-50 p-6 rounded-2xl border border-rose-100 min-h-[160px] flex items-center justify-center text-center">
+                            <p class="text-slate-800 font-semibold leading-relaxed text-base sm:text-lg italic" id="quote-block">
+                                "여러분이 없으면 브랜드의 가치는 단 하루도 유지될 수 없습니다. 감정 노동 속에서도 매 순간 미소를 일궈내시는 여러분이 진정한 영웅입니다."
+                            </p>
+                        </div>
+                    </div>
+                    <div class="flex justify-between items-center mt-6">
+                        <span class="text-xs text-slate-400">by 10년 차 고객관리 실장</span>
+                        <button onclick="drawNewQuote()" class="px-5 py-2.5 bg-slate-100 hover:bg-slate-200 text-slate-700 rounded-xl text-sm font-bold flex items-center gap-2 transition-all">
+                            <i data-lucide="shuffle" class="w-4 h-4"></i> 다른 위로 한마디
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Black Consumer Policy Banner -->
+            <div class="bg-red-50 rounded-2xl border border-red-200 p-6 sm:p-8">
+                <div class="flex flex-col sm:flex-row gap-4 sm:items-center justify-between">
+                    <div class="flex gap-4 items-start sm:items-center">
+                        <div class="p-3 bg-red-100 rounded-xl text-red-600 shrink-0">
+                            <i data-lucide="shield-alert" class="w-6 h-6"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-lg font-bold text-red-950">악성 고질 민원(블랙컨슈머) 전용 특별 권한 수여</h3>
+                            <p class="text-sm text-red-800 mt-1 leading-relaxed">
+                                인격 모독, 고성, 모욕, 혹은 선을 넘는 행태 발견 시 <strong class="underline">매뉴얼 경고 2회 실행 후 상담사가 직권으로 전화 통화를 끊을 수 있는 '선끊기 권한'</strong>이 전원에게 자동 부여됩니다. 두려워 마시고 회사 정책을 바탕으로 스스로를 먼저 지켜내십시오.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-slate-900 text-slate-400 border-t border-slate-800 text-center py-6 text-xs">
+        <div class="max-w-7xl mx-auto px-4">
+            <p>© 2026 Customer Management Support. All Rights Reserved. "당신의 하루를 진심으로 응원합니다."</p>
+        </div>
+    </footer>
+
+    <!-- JS Logic -->
+    <script>
+        // Tab switching logic
+        function switchTab(tabId) {
+            // Hide all tabs
+            document.querySelectorAll('.tab-content').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            // Show target tab
+            const targetTab = document.getElementById(tabId);
+            if (targetTab) {
+                targetTab.classList.add('active');
+            }
+
+            // Update tab button styles
+            document.querySelectorAll('.tab-btn').forEach(btn => {
+                btn.className = "tab-btn px-4 py-2 text-sm font-medium rounded-lg text-slate-600 hover:text-slate-900 hover:bg-slate-100 flex items-center gap-2 whitespace-nowrap transition-all";
+            });
+            const activeBtn = document.getElementById(`btn-${tabId}`);
+            if (activeBtn) {
+                activeBtn.className = "tab-btn px-4 py-2 text-sm font-medium rounded-lg bg-indigo-50 text-indigo-700 flex items-center gap-2 whitespace-nowrap transition-all";
+            }
+        }
+
+        // --- SECTION 2: INDUSTRY SCRIPT GENERATOR LOGIC ---
+        let currentSelectedIndustry = 'it';
+        let currentSelectedStep = 1;
+
+        const scriptsDatabase = {
+            it: {
+                industryName: "IT 가전 / 가젯 분야",
+                tip: "IT 기기 특성상 고장 유무에 극히 민감합니다. 문제의 근원을 '불량'으로 칭하기 보다는, '일시적인 호환 에러' 또는 '정비 지점 재인식'으로 가볍게 표현하며 기계 신인도를 방어해 주십시오.",
+                steps: {
+                    1: "많이 불편하셨겠습니다, 고객님. 믿고 구매해 주신 소중한 IT 가전제품에 작동 상 오류가 나타나 정말 안타까운 심정입니다. 조속히 진료하듯 빠르게 가이드를 마련하겠습니다.",
+                    2: "명밀한 원격 상태 진단을 위해 몇 가지만 질문드리겠습니다. 현상이 처음 가동 시에만 나타나는 편인지요, 아니면 고속 충전 또는 열이 약간 수반될 때 자주 나타나는가요?",
+                    3: "보증 규정에 의거하여 점검을 지원할 예정입니다. 다행히 해당 수명 연도 범위 내로 무상 처리가 확정되십니다. 자가 테스트 파일럿으로 먼저 진행할지 전문 센터 기사 연결을 도울지 선택해 보십시오.",
+                    4: "최종 정리하겠습니다. 내일 오전 중 지정 지점 엔지니어가 방문 예정으로 안심하고 대기해 주십시오. 방문 예약 알림 메시지를 입력해 주신 휴대전화로 전송해 드렸습니다."
+                }
+            },
+            furniture: {
+                industryName: "생활 가구 / 인테리어 분야",
+                tip: "가구 및 목재, 가죽 제품 등은 배송이나 안착 과정에서 '수평 상태' 및 '환경적 배치' 요인이 주요합니다. 고객의 가구 구조와 가옥 배치 특수성을 면밀히 물어보아 조기에 현명하게 분쟁을 차단하세요.",
+                steps: {
+                    1: "아이고 고객님, 오래 설레는 맘으로 기다려서 받아보신 가구에 불량이 있을까 봐 많이 심려가 깊으셨을 듯합니다. 생활하시기 힘드실 텐데 책임지고 해결을 유도하겠습니다.",
+                    2: "가죽 표면의 질감 이질 현상이 나타난 정밀 환경을 확인하고 싶습니다. 혹시 빛이 역광으로 들어오는 아침 시간대에 두드러져 보이시는지, 아니면 일정한 마모가 만져지시는지요?",
+                    3: "소재 특성상 자연 상태의 원목 질감이 존재할 순 있으나 미적인 불편감을 덜기 위해 특별 출장 케어 서비스를 조율해 드릴 예정입니다. 다음 주 목요일 시간 예약 잡아드릴까요?",
+                    4: "네, 대리점 담당 전문 인력이 자재와 수평 조절기를 구비하여 배정 일정에 출발하겠습니다. 수리 전 공간 확보 등 안내 사항을 팁으로 남겨놓았습니다. 편하게 사용해 주세요."
+                }
+            },
+            saas: {
+                industryName: "SaaS 솔루션 / SW 분야",
+                tip: "소프트웨어 솔루션 오류 시 즉각 업무 생산성과 직결되어 극도로 예민하게 화를 낼 수 있습니다. 이럴 땐 기민함(Urgency)과 '우회 조치법(Workaround)'을 신속하게 안내해 드려 진정시키는 것이 키포인트입니다.",
+                steps: {
+                    1: "고객님, 사내 시스템 워크플로우에 심려를 드려 무척 유감스럽습니다. 중요한 시점에 즉각적인 업무 차질이 생겼을 고객사 여러분의 마음에 큰 책임을 느낍니다.",
+                    2: "현재 브라우저 캐시 및 디바이스 특성이 충돌하고 있을 수 있습니다. 사용하시는 전용 대시보드가 크롬 환경인지요? 아니면 타 시크릿 모드에서도 동일 현상이 보이는지요?",
+                    3: "우선 중요한 업무 마감을 선점하실 수 있게 임시 우회 전송 링크를 공유해 드리겠습니다. 그 사이 개발자 패치 서버가 가용 데이터를 재인식하도록 백엔드 부서에 전면 긴급 조치하겠습니다.",
+                    4: "현 개발 패치는 긴급 복구가 30분 내 마무리될 전망입니다. 작업 중이시던 데이터는 보존 조치 완료했으니 안심하세요. 이상이 완전 해소되는 시점에 모니터링 SMS로 최종 회신 올리겠습니다."
+                }
+            }
+        };
+
+        function changeIndustry(indId) {
+            currentSelectedIndustry = indId;
+            // Highlight button
+            document.querySelectorAll('.ind-btn').forEach(btn => {
+                btn.className = "ind-btn px-4 py-1.5 text-xs sm:text-sm font-semibold rounded-lg text-slate-600 hover:text-slate-800 transition-all";
+            });
+            document.getElementById(`ind-${indId}`).className = "ind-btn px-4 py-1.5 text-xs sm:text-sm font-semibold rounded-lg bg-white text-indigo-700 shadow-sm transition-all";
+            
+            // Refresh Scripts
+            updateScriptPanel();
+        }
+
+        function showStepScript(stepNumber) {
+            currentSelectedStep = stepNumber;
+            // Highlight menu
+            document.querySelectorAll('.step-script-btn').forEach(btn => {
+                btn.className = "step-script-btn w-full p-3 text-left rounded-xl bg-slate-50 border-l-4 border-transparent text-slate-700 font-medium text-sm flex items-center justify-between hover:bg-slate-100 transition-all";
+                // Reset arrow color
+                const icon = btn.querySelector('svg');
+                if (icon) icon.className.baseVal = "w-4 h-4 text-slate-400";
+            });
+            const activeStepBtn = document.getElementById(`step-btn-${stepNumber}`);
+            if (activeStepBtn) {
+                activeStepBtn.className = "step-script-btn w-full p-3 text-left rounded-xl bg-indigo-50 border-l-4 border-indigo-600 font-bold text-indigo-900 text-sm flex items-center justify-between transition-all";
+                const icon = activeStepBtn.querySelector('svg');
+                if (icon) icon.className.baseVal = "w-4 h-4 text-indigo-600";
+            }
+
+            // Refresh Scripts
+            updateScriptPanel();
+        }
+
+        function updateScriptPanel() {
+            const currentData = scriptsDatabase[currentSelectedIndustry];
+            const text = currentData.steps[currentSelectedStep];
+            
+            // Update labels
+            document.getElementById('script-industry-indicator').innerText = currentData.industryName;
+            document.getElementById('script-text-content').innerText = text;
+            document.getElementById('industry-extra-tip').innerText = currentData.tip;
+
+            // Update Stage indicator
+            const stageTitles = {
+                1: "STAGE 1: 경청 & 쿠션 공감",
+                2: "STAGE 2: 원인 정량 진단",
+                3: "STAGE 3: 맞춤식 솔루션 제의",
+                4: "STAGE 4: 조치 확정 및 고지"
+            };
+            document.getElementById('script-stage-indicator').innerText = stageTitles[currentSelectedStep];
+        }
+
+        function copyToClipboard() {
+            const scriptText = document.getElementById('script-text-content').innerText;
+            
+            // Create a temporary textarea element for clipboard copying
+            const tempTextArea = document.createElement("textarea");
+            tempTextArea.value = scriptText;
+            document.body.appendChild(tempTextArea);
+            tempTextArea.select();
+            
+            try {
+                // Compatible execute command
+                document.execCommand('copy');
+                // Friendly confirmation
+                alert("스크립트가 클립보드에 성공적으로 복사되었습니다! 상담 창에 붙여넣어(Ctrl+V) 활용해 보세요.");
+            } catch (err) {
+                alert("복사 실패. 스크립트 텍스트를 드래그하여 수동으로 복사해 주세요.");
+            }
+            
+            document.body.removeChild(tempTextArea);
+        }
+
+        // --- SECTION 3: SIMULATOR LOGIC ---
+        let currentSimOpponent = 'angry';
+        let currentSimProgress = 0;
+
+        const simulationData = {
+            angry: {
+                name: "김태만 고객 (52세)",
+                avatar: "😡",
+                emotion: "분노 지수 95%",
+                advice: "김태만 님은 구매 직후 불량을 보아 화가 치밀어 있습니다. 사유를 변명하면 추가 폭발을 일으킵니다. 사과와 공감을 먼저 내세우고 3초 침묵 원칙을 지켜 차분하게 대답하세요.",
+                dialogues: [
+                    {
+                        customerText: "아니 저기요, 이거 저번 주말에 샀는데 지금 당장 화면에 빨간 줄이 쭉쭉 가는데 쓸 수가 있어야지! 환불을 즉각 해주든지 당장 내일까지 와서 신상으로 바꾸고 가요!!",
+                        options: [
+                            {
+                                text: "(침착하게 3초 쉬고 소프라노 톤 차분히) 많이 당황스럽고 불편하셨을 것입니다 고객님. 새것으로 사용해 보시는 즐거움에 해를 입혀 마음 가득 깊은 유감을 느낍니다. 빠르게 수거 기사를 연결할 텐데 마음이 조금 풀리실 수 있게 도와드려도 괜찮으실까요?",
+                                score: 100,
+                                coachComment: "최고의 3초 침묵과 완벽한 공감 멘트입니다! 고객의 방어벽이 순식간에 녹아내립니다.",
+                                customerReply: "하... 참... 내... 그래요. 상담사 양반이 뭔 죄겠소. 말이라도 그리 해주니 그나마 좀 낫네. 어째 진행이 되는 거요?"
+                            },
+                            {
+                                text: "아 고객님, 제품 구매 초기 고장은 일시적 회로 오작동일 확률이 큽니다. 그리고 환불은 임의로 해드릴 수 없고 무조건 기사가 검사를 끝내야 절차가 흐를 수 있습니다.",
+                                score: 30,
+                                coachComment: "상대에게 '규정'을 먼저 앞세우고 성급한 고장 판단을 던져 감정이 극대화되었습니다! 다시 시작해 보십시오.",
+                                customerReply: "뭐라구요? 내 잘못도 아닌데 규정 타령이야? 지금 나를 가르치려는 거요? 당장 책임자 대려와요!!"
+                            }
+                        ]
+                    },
+                    {
+                        customerText: "하... 참... 내... 그래요. 상담사 양반이 뭔 죄겠소. 말이라도 그리 해주니 그나마 좀 낫네. 어째 진행이 되는 거요?",
+                        options: [
+                            {
+                                text: "마음을 열어 넓게 품어주셔서 진심으로 고개 숙여 감사드립니다. 무척 난감하셨을 마음을 잘 알기에 기계 진단 수리를 긴급 응급 예약으로 최상위 승인해 놓았습니다. 기사가 직접 수령 부품을 챙겨 내일 낮 2시까지 직접 가옥으로 들어갈 수 있도록 정식 수배 완료했는데 시간이 잘 괜찮으신가요?",
+                                score: 100,
+                                coachComment: "훌륭한 5단계 마스터급 정착입니다. 해결책 확정 및 고지와 사후 확인까지 자연스럽게 인계되었습니다.",
+                                customerReply: "좋아요, 상담사 양반이 이렇게 성의를 보여주니까 내가 더 소리 안 칠게. 내일 2시 시간 비워둘 테니 기사 꼭 챙겨 보내줘요."
+                            },
+                            {
+                                text: "그렇다면 다행입니다. 원칙대로 수리가 진행될 예정이니, 제가 접수한 접수증으로 내일 혹은 모레 중 아무 때나 방문 기사가 오면 해결하시면 됩니다. 추가 조치 원하시는 거 있으신지요?",
+                                score: 50,
+                                coachComment: "너무 차갑게 끝맺음을 하였습니다. 고객과의 소중한 신뢰 모멘텀이 소멸될 수 있으니 더 친절히 절차를 매조지어 보세요.",
+                                customerReply: "아무 때나라니요? 내일 언제 오는지 정확히 통보는 해줘야 할 거 아니오? 역시 말만 번지르르하군."
+                            }
+                        ]
+                    }
+                ]
+            },
+            refund: {
+                name: "박유나 고객 (29세)",
+                avatar: "💸",
+                emotion: "환불 불통 상태",
+                advice: "박유나 님은 수리 점검을 거절하고 당장의 전액 환불을 약조 받길 원합니다. 무작정 규정 위반이라고 쳐내는 것보단 공감하되 '점검 우선의 합리성'을 나긋나긋 정조준해 제안해 보십시오.",
+                dialogues: [
+                    {
+                        customerText: "산 지 일주일도 안 되었어요. 번거롭게 수리 기사가 오고 그런 시간 없고요. 직장인이라 바쁩니다. 오늘 즉시 무조건 계좌로 전액 환불 반품 수거 처리 확답해 주세요.",
+                        options: [
+                            {
+                                text: "고객님, 저희는 전자상거래 보호 조항 및 내부 정책상 초기 불량이 기술 인력 진단 검수를 받아 완전히 고장 판정이 나야지만 영수증 반전 환불 처리가 들어맞게 됩니다. 기사 미팅 없이 전액 반품은 절대 법적으로 위배되어 불가하오니 참고 부탁드립니다.",
+                                score: 40,
+                                coachComment: "'절대 불가' 또는 '법적 위배' 같이 대항적인 어조를 구사하여 고객의 전투 의욕을 다시금 증강하고 말았습니다.",
+                                customerReply: "일주일 만에 고장 난 걸 환불해 달라는 게 내 잘못이에요? 당신들 물건을 이렇게 불량으로 팔아놓고 어디서 법을 들이댑니까? 소비자원에 바로 고발할게요!"
+                            },
+                            {
+                                text: "바쁘신 업무 일정 와중 고장 현상으로 시간까지 뺏기시게 하여 무척 송구한 마음입니다. 얼마나 소중한 시간인지 깊이 알고 있기에 더욱 고민스럽습니다. 다만 본사 전산상 환불 자금 승인을 위해 엔지니어의 규격 판정 코드가 최소 1회 필수 매치되어야 하여 정식 점검 승인이 급선무입니다. 출장 예약을 고객님이 원하시는 퇴근 후 시간인 19시 타임으로 야간 기사 특송 배정해 봐 드려도 괜찮겠습니까?",
+                                score: 100,
+                                coachComment: "상대방의 시간(바쁜 일정)을 최우선 가치로 존중하면서, 왜 점검이 필요한지 원칙을 나긋하고 합리적으로 포섭한 완벽한 멘트입니다!",
+                                customerReply: "하... 19시에도 기사님이 와 주시나요? 그렇다면 번거롭긴 하지만 그때 점검받고 환불 승인서 끊어주시는 거죠? 그럼 진행해 주세요."
+                            }
+                        ]
+                    },
+                    {
+                        customerText: "하... 19시에도 기사님이 와 주시나요? 그렇다면 번거롭긴 하지만 그때 점검받고 환불 승인서 끊어주시는 거죠? 그럼 진행해 주세요.",
+                        options: [
+                            {
+                                text: "맞습니다. 바쁜 고객님의 편의를 위해 특별히 야간 탄력근무 엔지니어로 등록하여 지체 없이 수립해 드렸습니다. 내일 퇴근 시간 이후 마음 편히 맞이해 보시고, 추가로 더 걱정되시는 사안 있으신지요?",
+                                score: 100,
+                                coachComment: "예외적 조치로 인한 특별 관리를 각인시키면서 최고의 안도감을 주었습니다. 모범 답안입니다.",
+                                customerReply: "고마워요. 일하는 도중에 기사 오고 가는 거 불편했는데 이 시간으로 조율해 주니 편안하네요. 그렇게 처리할게요."
+                            }
+                        ]
+                    }
+                ]
+            },
+            unclear: {
+                name: "이성훈 고객 (68세)",
+                avatar: "🤔",
+                emotion: "설명 곤란 상태",
+                advice: "어르신 고객은 증상을 표현하기 어려워합니다. 성급하게 재촉하지 말고, 어린아이에게 사물을 물어보듯 객관식 질문과 친절한 예시어로 조율해 드리는 경청 미덕이 요구됩니다.",
+                dialogues: [
+                    {
+                        customerText: "아니 내가 잘은 모르는데 말이야... 이 상자가 자꾸 삐-삐- 하기도 하고 가끔은 아무 불도 안 들어왔다 나갔다 하는데 기계가 수명이 다한 거요?",
+                        options: [
+                            {
+                                text: "(따뜻하고 여유로운 대화 속도) 네, 어머님 아버님, 직접 조작하시며 자꾸 작동이 꺼져서 답답하셨을 마음 충분히 헤아려 드립니다. 제가 쉽게 알아볼 테니 편하게 생각하세요. 삐 소리가 세 번 짧게 울리나요? 아니면 길게 호루라기 소리처럼 삐이- 울리는가요?",
+                                score: 100,
+                                coachComment: "환상적인 수용 가이드와 눈높이 제안입니다. 고객이 정확하게 대답할 수 있는 문을 쉽게 열었습니다.",
+                                customerReply: "어.. 그게 말이지.. 삐이- 하고 소리가 좀 길게 늘어져. 그리고 나선 저 아래 빨간 불빛 단추가 깜빡깜빡 흔들리더라고."
+                            },
+                            {
+                                text: "고객님, 정확한 모델 식별 및 에러 코드 명세 확인이 시급합니다. 제품 뒷면 하단부 은색 딱지에 적힌 영어 대문자와 숫자 코드 8자리를 직접 눈으로 식별하셔서 똑같이 일러주셔야 분류가 됩니다.",
+                                score: 30,
+                                coachComment: "고령층 고객에 대한 이해가 부족합니다. 은색 딱지의 복잡한 코드는 고객에게 또 다른 스트레스로 다가갈 뿐입니다.",
+                                customerReply: "뭐라구? 늙은이가 눈도 안 보이고 그 뒷면 무거운 상자를 어떻게 들어 올려서 보란 말이여? 거 너무하는구만!"
+                            }
+                        ]
+                    },
+                    {
+                        customerText: "어.. 그게 말이지.. 삐이- 하고 소리가 좀 길게 늘어져. 그리고 나선 저 아래 빨간 불빛 단추가 깜빡깜빡 흔들리더라고.",
+                        options: [
+                            {
+                                text: "정밀하게 찾아내 주셔서 정말 많은 힌트가 되었습니다! 말씀해 주신 긴 신호음과 빨간 불빛은 전원 선이 플러그에 느슨하게 꽂혀 있을 때 나오는 전압 충돌 현상일 공산이 큽니다. 혹시 괜찮으시다면 지금 뒤쪽 둥근 콘센트를 힘주어 한 번 꾹 눌러 끼워 주실 수 있으실까요?",
+                                score: 100,
+                                coachComment: "자가 극복 조치를 아주 쉽게 유도했습니다. 기사 출장비 걱정을 덜어주는 최고의 실버 어드바이스 조치입니다.",
+                                customerReply: "어이쿠, 그래요? 기다려봐... 꾹 눌렀더니 소리가 딱 멎고 파란 불로 다시 잘 돌아가네! 허허 고마워라, 기사 안 불러도 되겠구먼!"
+                            }
+                        ]
+                    }
+                ]
+            }
+        };
+
+        function startSimulation(charId) {
+            currentSimOpponent = charId;
+            currentSimProgress = 0;
+
+            // Highlight button
+            document.querySelectorAll('.sim-char-btn').forEach(btn => {
+                btn.className = "sim-char-btn w-full p-4 rounded-xl text-left border-2 border-transparent bg-white hover:bg-slate-50 flex gap-3 transition-all";
+            });
+            document.getElementById(`sim-btn-${charId}`).className = "sim-char-btn w-full p-4 rounded-xl text-left border-2 border-indigo-600 bg-indigo-50/50 flex gap-3 transition-all";
+
+            // Set profile
+            const profile = simulationData[charId];
+            document.getElementById('target-avatar').innerText = profile.avatar;
+            document.getElementById('target-name').innerText = profile.name;
+            document.getElementById('target-emotion').innerHTML = `<span class="w-2 h-2 bg-rose-600 rounded-full animate-ping"></span> ${profile.emotion}`;
+            document.getElementById('coach-realtime-advice').innerText = profile.advice;
+
+            // Clear chat and set initial message
+            const chatBox = document.getElementById('sim-chat-box');
+            chatBox.innerHTML = `
+                <div class="flex items-start gap-3">
+                    <div class="w-8 h-8 rounded-full bg-slate-200 flex items-center justify-center text-sm shrink-0">${profile.avatar}</div>
+                    <div class="bg-slate-100 rounded-2xl rounded-tl-none p-3 max-w-[85%] text-slate-800 text-sm shadow-sm leading-relaxed">
+                        "${profile.dialogues[0].customerText}"
+                    </div>
+                </div>
+            `;
+
+            loadOptions();
+        }
+
+        function loadOptions() {
+            const profile = simulationData[currentSimOpponent];
+            const stepData = profile.dialogues[currentSimProgress];
+            const optionsContainer = document.getElementById('sim-options-container');
+            optionsContainer.innerHTML = '';
+
+            if (!stepData) {
+                // Simulation Completed Successfully
+                optionsContainer.innerHTML = `
+                    <div class="bg-emerald-50 border border-emerald-200 p-4 rounded-xl text-center">
+                        <div class="text-emerald-800 font-bold mb-1">🎉 상담 대화 성공 완료!</div>
+                        <p class="text-xs text-slate-600 mb-3">10년 차 실장님의 합격 기준을 패스하셨습니다. 뛰어난 응대력입니다!</p>
+                        <button onclick="resetSimulation()" class="px-4 py-2 bg-indigo-600 hover:bg-indigo-500 text-white text-xs font-bold rounded-lg transition-all">연습 다시 시작하기</button>
+                    </div>
+                `;
+                return;
+            }
+
+            stepData.options.forEach((opt, idx) => {
+                const optButton = document.createElement('button');
+                optButton.className = "w-full text-left p-3.5 rounded-xl border border-slate-200 bg-white hover:border-indigo-500 hover:bg-indigo-50/30 text-xs sm:text-sm text-slate-700 transition-all shadow-sm flex items-start gap-3";
+                optButton.innerHTML = `
+                    <span class="w-5 h-5 rounded-full bg-slate-100 text-slate-500 text-xs font-bold flex items-center justify-center shrink-0 mt-0.5">${idx + 1}</span>
+                    <span class="leading-relaxed">${opt.text}</span>
+                `;
+                optButton.onclick = () => selectOption(idx);
+                optionsContainer.appendChild(optButton);
+            });
+        }
+
+        function selectOption(index) {
+            const profile = simulationData[currentSimOpponent];
+            const stepData = profile.dialogues[currentSimProgress];
+            const selectedOpt = stepData.options[index];
+
+            const chatBox = document.getElementById('sim-chat-box');
+            
+            // Append Counselor Reply
+            chatBox.innerHTML += `
+                <div class="flex items-start gap-3 justify-end">
+                    <div class="bg-indigo-600 text-white rounded-2xl rounded-tr-none p-3 max-w-[85%] text-sm shadow-sm leading-relaxed">
+                        "${selectedOpt.text}"
+                    </div>
+                    <div class="w-8 h-8 rounded-full bg-indigo-100 text-indigo-700 text-xs font-bold flex items-center justify-center shrink-0">나</div>
+                </div>
+            `;
+
+            // Auto-scroll
+            chatBox.scrollTop = chatBox.scrollHeight;
+
+            // Delayed Customer response and feedback
+            setTimeout(() => {
+                if (selectedOpt.score >= 80) {
+                    // Good Choice -> Advance
+                    chatBox.innerHTML += `
+                        <div class="flex items-start gap-3">
+                            <div class="w-8 h-8 rounded-full bg-slate-200 flex items-center justify-center text-sm shrink-0">${profile.avatar}</div>
+                            <div class="bg-slate-100 rounded-2xl rounded-tl-none p-3 max-w-[85%] text-slate-800 text-sm shadow-sm leading-relaxed">
+                                "${selectedOpt.customerReply}"
+                            </div>
+                        </div>
+                    `;
+                    currentSimProgress++;
+                    document.getElementById('coach-realtime-advice').innerHTML = `
+                        <span class="text-emerald-700 font-bold block mb-1">👍 우수 응대 피드백:</span>
+                        "${selectedOpt.coachComment}"
+                    `;
+                    loadOptions();
+                } else {
+                    // Bad Choice -> Needs Retry
+                    chatBox.innerHTML += `
+                        <div class="flex items-start gap-3">
+                            <div class="w-8 h-8 rounded-full bg-slate-200 flex items-center justify-center text-sm shrink-0">🤦‍♂️</div>
+                            <div class="bg-red-50 border border-red-200 text-red-800 rounded-2xl rounded-tl-none p-3 max-w-[85%] text-sm shadow-sm leading-relaxed">
+                                (고객이 대화 이탈 조짐) "${selectedOpt.customerReply}"
+                            </div>
+                        </div>
+                    `;
+                    document.getElementById('coach-realtime-advice').innerHTML = `
+                        <span class="text-rose-700 font-bold block mb-1">🚨 실장님 긴급 개입:</span>
+                        "${selectedOpt.coachComment} 다시 한번 차분히 좋은 문항을 골라보세요!"
+                    `;
+                    
+                    // Allow to retry the same step by just loading options again
+                    loadOptions();
+                }
+                chatBox.scrollTop = chatBox.scrollHeight;
+            }, 1000);
+        }
+
+        function resetSimulation() {
+            startSimulation(currentSimOpponent);
+        }
+
+        // --- SECTION 4: MENTAL HEALTH HEALING LOGIC ---
+        const healerQuotes = [
+            "여러분이 오늘 만난 무리한 요구는 여러분을 겨냥한 것이 아닌 제품 결함일 뿐입니다. 당신은 지금 너무도 현명하고 기품있게 직분을 수행하고 있습니다.",
+            "오늘의 어두운 폭풍우 속에서도 차분한 정원의 등불처럼 자리를 밝혀주신 동료 여러분, 퇴근길 하늘은 그 어느 때보다 아늑하고 맑길 희망합니다.",
+            "매주 수백 건의 불편을 감사와 평온으로 돌려놓는 기적의 마술사, 그게 바로 우리 상담사분들의 위대함입니다. 자존감을 높이 세워 가십시오.",
+            "무리하게 고집 피운 그 고객도 오늘 저녁엔 당신의 고운 대답에 고마움을 부끄럽게나마 돌아보았을 겁니다. 미소 지은 스스로를 마음껏 칭송하세요.",
+            "상담사 여러분, 일터 밖으로 나가는 순간 세상에서 가장 소중한 누군가의 소중한 영웅이자 멋진 한 사람으로 우뚝 섭니다. 힘겨운 감정의 때를 훌훌 털어 버리세요."
+        ];
+
+        function drawNewQuote() {
+            const randomIdx = Math.floor(Math.random() * healerQuotes.length);
+            const quoteText = healerQuotes[randomIdx];
+            document.getElementById('quote-block').innerText = `"${quoteText}"`;
+        }
+
+        // Breathing Circle Logic
+        let breatheInterval;
+        let isBreathing = false;
+        let secondsLeft = 3;
+        let breatheStage = 'In'; // In, Hold, Out
+
+        function toggleBreatheTimer() {
+            const btn = document.getElementById('breathe-control-btn');
+            if (isBreathing) {
+                // Stop
+                clearInterval(breatheInterval);
+                isBreathing = false;
+                btn.innerText = "호흡 가이드 시작";
+                document.getElementById('breathe-status').innerText = "호흡 대기";
+                document.getElementById('breathe-counter').innerText = "00:03";
+            } else {
+                // Start
+                isBreathing = true;
+                btn.innerText = "가이드 일시정지";
+                secondsLeft = 3;
+                breatheStage = 'In';
+                document.getElementById('breathe-status').innerText = "숨 들이마시기 👃";
+                document.getElementById('breathe-counter').innerText = `00:0${secondsLeft}`;
+                
+                breatheInterval = setInterval(() => {
+                    secondsLeft--;
+                    if (secondsLeft < 0) {
+                        // Switch Phase
+                        if (breatheStage === 'In') {
+                            breatheStage = 'Hold';
+                            secondsLeft = 3;
+                            document.getElementById('breathe-status').innerText = "호흡 멈추기 ⏱️";
+                        } else if (breatheStage === 'Hold') {
+                            breatheStage = 'Out';
+                            secondsLeft = 3;
+                            document.getElementById('breathe-status').innerText = "숨 길게 내쉬기 💨";
+                        } else {
+                            breatheStage = 'In';
+                            secondsLeft = 3;
+                            document.getElementById('breathe-status').innerText = "숨 들이마시기 👃";
+                        }
+                    }
+                    document.getElementById('breathe-counter').innerText = `00:0${secondsLeft}`;
+                }, 1000);
+            }
+        }
+
+        // --- STREAMING_CHUNK:Initializing the app on window load... ---
+        // Init Load
+        window.onload = function() {
+            // Replace Lucide icons
+            lucide.createIcons();
+            // Init Script Database
+            updateScriptPanel();
+            // Init Simulator with first option
+            startSimulation('angry');
+        }
+    </script>
+</body>
+</html>
